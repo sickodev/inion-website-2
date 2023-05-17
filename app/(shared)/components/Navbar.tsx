@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     return (
-        <nav className='px-2 my-2 flex items-center justify-between bg-transparent'>
+        <nav className='sticky top-0 px-2 my-2 flex items-center justify-between bg-transparent'>
             <button
                 type='button'
                 onClick={() => {
