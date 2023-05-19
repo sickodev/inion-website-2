@@ -1,8 +1,6 @@
-import Navbar from "./(shared)/components/Navbar";
 import "./globals.css";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins, Raleway } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
@@ -16,11 +14,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang='en' className='my-1'>
-            <body className={poppins.className}>
-                <Navbar />
-                {children}
-            </body>
+        <html lang='en' className=''>
+            <body className={poppins.className}>{children}</body>
         </html>
     );
 }
