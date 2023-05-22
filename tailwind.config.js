@@ -7,15 +7,11 @@ module.exports = {
     ],
     theme: {
         extend: {
-            backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic":
-                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-            },
-            transform: {
-                skew: "skewY(-10deg)",
+            colors: {
+                primary: "#25AEEC",
+                secondary: "#5D5FF4",
             },
         },
     },
-    plugins: [],
+    plugins: [require("tailwind-scrollbar-hide")],
 };

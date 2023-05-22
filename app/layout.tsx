@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Poppins, Raleway } from "next/font/google";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata = {
     title: "Inion VR",
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en' className=''>
-            <body className={poppins.className}>{children}</body>
+            <body className={`${poppins.className}`}>{children}</body>
         </html>
     );
 }
