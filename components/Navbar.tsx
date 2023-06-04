@@ -60,8 +60,8 @@ const Navbar = () => {
                         <Image
                             src={logo}
                             alt=''
-                            height={60}
-                            width={60}
+                            height={75}
+                            width={75}
                             className='transition-all duration-300 ease-in active:scale-90'
                         />
                     </Link>
