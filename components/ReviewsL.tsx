@@ -3,7 +3,7 @@ import ReviewCard from "./ReviewCard";
 
 const ReviewsL = () => {
     return (
-        <section className='mx-12 hidden md:block'>
+        <section className='mx-12 hidden md:block' id='reviews'>
             <div className='py-8'>
                 <div className='w-full text-center'>
                     <h2 className='md:text-6xl text-3xl'>

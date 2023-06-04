@@ -25,7 +25,7 @@ const Footer = () => {
                         </button>
                     </div>
                 </div>
-                <div className='w-full text-center'>
+                <div className='w-full text-left'>
                     <h3 className='font-bold text-lg'>Contact :</h3>
                     <ul>
                         <li>123</li>

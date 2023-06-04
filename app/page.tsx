@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import React from "react";
 import About from "@/components/About";
@@ -11,7 +10,6 @@ import Footer from "@/components/Footer";
 const Page = () => {
     return (
         <main>
-            <Navbar />
             <Hero />
             {/* <div className='h-12 w-full bg-gradient-to-b from-white to-primary'></div> */}
             <About />

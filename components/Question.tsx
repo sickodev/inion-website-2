@@ -14,7 +14,7 @@ const Question = () => {
                 <div className='text-center md:text-left w-full'>
                     <h2 className='text-3xl leading-relaxed'>
                         Do you have any{" "}
-                        <span className='bg-primary px-2 text-white'>
+                        <span className='bg-primary px-2 text-white underline decoration-[2px] underline-offset-2'>
                             Question ?
                         </span>
                     </h2>
