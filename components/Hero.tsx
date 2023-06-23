@@ -1,14 +1,17 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+    const router = useRouter();
+
     return (
         <section className='py-8' id='home'>
-            <div className='flex mx-10 flex-col md:flex-row justify-between'>
+            <div className='flex mx-6 md:mx-10 flex-col md:flex-row justify-between'>
                 <div className='my-16'>
                     <div className='md:w-[30rem]'>
-                        <h1 className='text-4xl md:text-5xl'>
+                        <h1 className='text-4xl md:text-5xl tracking-normal'>
                             Lorem ipsum{" "}
                             <span className='text-white underline underline-offset-4 decoration-[2px] bg-primary px-1'>
                                 dolor
@@ -24,6 +27,9 @@ const Hero = () => {
                         nulla.
                     </p>
                     <motion.button
+                        onClick={() => {
+                            router.push("/contact");
+                        }}
                         className='border-2 p-2 bg-secondary text-white border-black'
                         initial={{ boxShadow: "0 0 10px rgba(0,0,0,0.3)" }}
                         whileHover={{
@@ -31,7 +37,7 @@ const Hero = () => {
                         }}
                         whileTap={{ scale: 0.9 }}
                     >
-                        <h5>Get in Touch</h5>
+                        <p>Get in Touch</p>
                     </motion.button>
                 </div>
                 <div className=''>

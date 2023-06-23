@@ -2,14 +2,20 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 
 type Props = {
     src?: string;
-    title?: string;
+    name: string;
     description?: string;
 };
 
-const ProductCard = ({ src, title, description }: Props) => {
+const ProductCard = ({ src, name, description }: Props) => {
+    const router = useRouter();
+    const handleClick = () => {
+        const url = name.toLowerCase().split(" ").join("");
+        router.push(`/products/${url}`);
+    };
     return (
         <motion.div
             className='my-4 shadow-xl'
@@ -29,9 +35,10 @@ const ProductCard = ({ src, title, description }: Props) => {
             <div className='p-2 bg-white'>
                 <div className='flex items-center justify-between p-2 border-b-[2px] border-primary/60'>
                     <h4 className='md:text-2xl text-xl text-secondary font-bold'>
-                        Surgery Simulator
+                        {name}
                     </h4>
                     <motion.button
+                        onClick={handleClick}
                         className='text-white border-2 p-1 bg-secondary border-black'
                         whileTap={{ scale: 0.9 }}
                     >
@@ -39,11 +46,7 @@ const ProductCard = ({ src, title, description }: Props) => {
                     </motion.button>
                 </div>
                 <p className='text-sm md:text-md text-justify py-2 px-1'>
-                    Phasellus est libero, feugiat in iaculis et, placerat ac
-                    mauris. Etiam purus purus, placerat non ligula ac, feugiat
-                    hendrerit lectus. Sed condimentum nulla lectus, ut
-                    scelerisque enim mollis in. Duis eu rutrum magna, at
-                    venenatis lectus.
+                    {description}
                 </p>
             </div>
         </motion.div>

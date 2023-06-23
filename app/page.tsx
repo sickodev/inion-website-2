@@ -15,10 +15,7 @@ const Page = () => {
             <About />
             <Products />
             {/* <div className='h-12 w-full bg-gradient-to-b primary to-white'></div> */}
-            <ReviewsL />
-            <ReviewsM />
             <Question />
-            <Footer />
         </main>
     );
 };

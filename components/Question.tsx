@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const Question = () => {
+    const router = useRouter();
     return (
         <motion.div
             className='mx-12 md:px-8 py-8'
@@ -20,6 +22,9 @@ const Question = () => {
                     </h2>
                 </div>
                 <motion.button
+                    onClick={() => {
+                        router.push("/contact");
+                    }}
                     whileTap={{ scale: 0.9 }}
                     whileHover={{ boxShadow: "0 0 10px rgba(0,0,0,0.7)" }}
                     className='p-2 bg-secondary my-2 md:my-0 w-full md:w-48 border-2 border-black text-white'

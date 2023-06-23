@@ -1,6 +1,23 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 
+const products = [
+    {
+        id: 1,
+        name: "Surgery Simulator",
+        description:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi facere, aut laudantium corrupti quaerat veritatis perferendis. Reiciendis nihil voluptas, earum harum doloribus nostrum rem, laboriosam dolores perferendis eveniet neque officia!",
+        src: "",
+    },
+    {
+        id: 2,
+        name: "School VR",
+        description:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi facere, aut laudantium corrupti quaerat veritatis perferendis. Reiciendis nihil voluptas, earum harum doloribus nostrum rem, laboriosam dolores perferendis eveniet neque officia!",
+        src: "",
+    },
+];
+
 const Products = () => {
     return (
         <section id='products'>
@@ -14,9 +31,15 @@ const Products = () => {
                     </h2>
                 </div>
                 <div className='flex flex-col md:flex-row items-center justify-center gap-8 py-4'>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {products.map((product) => (
+                        <>
+                            <ProductCard
+                                key={product.id}
+                                name={product.name}
+                                description={product.description}
+                            />
+                        </>
+                    ))}
                 </div>
             </div>
         </section>

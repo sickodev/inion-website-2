@@ -74,27 +74,13 @@ const Navbar = () => {
                         <motion.div whileTap={{ scale: 0.9 }}>
                             <Link href={"#products"}>Products</Link>
                         </motion.div>
-                        <motion.div whileTap={{ scale: 0.9 }}>
+                        {/* <motion.div whileTap={{ scale: 0.9 }}>
                             <Link href={"#reviews"}>Testimonials</Link>
-                        </motion.div>
+                        </motion.div> */}
                         <motion.div whileTap={{ scale: 0.9 }}>
                             <Link href={"/contact"}>Contact</Link>
                         </motion.div>
                     </div>
-
-                    {/* <motion.button
-                        initial={{ padding: 0, opacity: 0 }}
-                        animate={{ padding: "6px", opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                        whileHover={{
-                            boxShadow: "0 0 10px rgba(0,0,0,0.7)",
-                            opacity: 1,
-                        }}
-                        whileTap={{ scale: 0.9 }}
-                        className='border-2 hidden md:inline border-black bg-secondary text-white'
-                    >
-                        <h3>Contact Us</h3>
-                    </motion.button> */}
                 </div>
                 <motion.button
                     onClick={() => setOpen(!open)}
@@ -113,87 +99,89 @@ const Navbar = () => {
             </nav>
             <AnimatePresence>
                 {open && (
-                    <motion.aside
-                        initial={{ width: 0 }}
-                        animate={{ width: "100vw" }}
-                        exit={{
-                            width: 0,
-                            transition: {
-                                delay: 0.3,
-                                duration: 0.5,
-                            },
-                        }}
-                        className='bg-gradient-to-b h-screen absolute md:hidden from-primary to-white flex-col top-16 left-0 z-10'
-                    >
-                        <motion.div
-                            className='flex flex-col items-start justify-center my-12 mr-4 ml-4 gap-4 py-2'
-                            initial='closed'
-                            animate='open'
-                            exit='closed'
-                            variants={sideVariants}
+                    <div className='absolute top-3 left-0'>
+                        <motion.aside
+                            initial={{ width: 0 }}
+                            animate={{ width: "70vw" }}
+                            exit={{
+                                width: 0,
+                                transition: {
+                                    delay: 0.3,
+                                    duration: 0.5,
+                                },
+                            }}
+                            className='bg-gradient-to-b h-screen sticky md:hidden from-primary to-white py-1 flex-col top-4 right-0 z-10'
                         >
-                            {links.map(({ name, to, id }) => (
-                                <motion.a
-                                    key={id}
-                                    href={to}
-                                    whileHover={{ scale: 1.1 }}
-                                    variants={itemVariants}
-                                    className='text-black mx-2 flex items-center justify-start'
-                                >
-                                    {name}
-                                </motion.a>
-                            ))}
-                            <motion.button
-                                variants={itemVariants}
-                                className='mx-2 border-2 border-secondary p-2 transition-all duration-200 ease-in hover:bg-secondary'
-                            >
-                                Book A Call
-                            </motion.button>
-                        </motion.div>
-                        <motion.div
-                            className='mx-4'
-                            initial='closed'
-                            animate='open'
-                            exit='closed'
-                            variants={sideVariants}
-                        >
-                            <motion.h1
-                                variants={itemVariants}
-                                className='mx-1 text-xl'
-                            >
-                                <span className='p-1 bg-primary text-white'>
-                                    Follow
-                                </span>{" "}
-                                Us
-                            </motion.h1>
                             <motion.div
+                                className='flex flex-col items-start justify-center my-12 mr-4 ml-4 gap-4 py-2'
                                 initial='closed'
                                 animate='open'
                                 exit='closed'
                                 variants={sideVariants}
-                                className='flex items-center space-x-3 my-3 mx-1'
                             >
-                                <motion.a
+                                {links.map(({ name, to, id }) => (
+                                    <motion.a
+                                        key={id}
+                                        href={to}
+                                        whileHover={{ scale: 1.1 }}
+                                        variants={itemVariants}
+                                        className='text-black mx-2 flex items-center justify-start'
+                                    >
+                                        {name}
+                                    </motion.a>
+                                ))}
+                                <motion.button
                                     variants={itemVariants}
-                                    className='p-1 border-[2px] border-primary'
+                                    className='mx-2 border-2 border-secondary p-2 transition-all duration-200 ease-in hover:bg-secondary'
                                 >
-                                    <AiOutlineTwitter className='h-6 w-6 text-primary' />
-                                </motion.a>
-                                <motion.a
-                                    variants={itemVariants}
-                                    className='p-1 border-[2px] border-primary'
-                                >
-                                    <AiOutlineInstagram className='h-6 w-6 text-primary' />
-                                </motion.a>
-                                <motion.a
-                                    variants={itemVariants}
-                                    className='p-1 border-[2px] border-primary'
-                                >
-                                    <AiOutlineLinkedin className='h-6 w-6 text-primary' />
-                                </motion.a>
+                                    Book A Call
+                                </motion.button>
                             </motion.div>
-                        </motion.div>
-                    </motion.aside>
+                            <motion.div
+                                className='mx-4'
+                                initial='closed'
+                                animate='open'
+                                exit='closed'
+                                variants={sideVariants}
+                            >
+                                <motion.h1
+                                    variants={itemVariants}
+                                    className='mx-1 text-xl'
+                                >
+                                    <span className='p-1 bg-primary text-white'>
+                                        Follow
+                                    </span>{" "}
+                                    Us
+                                </motion.h1>
+                                <motion.div
+                                    initial='closed'
+                                    animate='open'
+                                    exit='closed'
+                                    variants={sideVariants}
+                                    className='flex items-center space-x-3 my-3 mx-1'
+                                >
+                                    <motion.a
+                                        variants={itemVariants}
+                                        className='p-1 border-[2px] border-primary'
+                                    >
+                                        <AiOutlineTwitter className='h-6 w-6 text-primary' />
+                                    </motion.a>
+                                    <motion.a
+                                        variants={itemVariants}
+                                        className='p-1 border-[2px] border-primary'
+                                    >
+                                        <AiOutlineInstagram className='h-6 w-6 text-primary' />
+                                    </motion.a>
+                                    <motion.a
+                                        variants={itemVariants}
+                                        className='p-1 border-[2px] border-primary'
+                                    >
+                                        <AiOutlineLinkedin className='h-6 w-6 text-primary' />
+                                    </motion.a>
+                                </motion.div>
+                            </motion.div>
+                        </motion.aside>
+                    </div>
                 )}
             </AnimatePresence>
         </nav>

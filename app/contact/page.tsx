@@ -1,11 +1,11 @@
 "use client";
-import Navbar from "@/components/Navbar";
+import Image from "next/image";
 import React, { useState } from "react";
-import {
-    AiOutlineInstagram,
-    AiOutlineLinkedin,
-    AiOutlineTwitter,
-} from "react-icons/ai";
+
+type FormProps = {
+    state: string;
+    message?: string;
+};
 
 const Page = () => {
     const [inputs, setInputs] = useState({
@@ -14,7 +14,10 @@ const Page = () => {
         subject: "",
         message: "",
     });
-    const [form, setForm] = useState("");
+    const [form, setForm] = useState<FormProps>({
+        state: "",
+        message: "",
+    });
 
     const handleChange = (e: any) => {
         setInputs((prev) => ({
@@ -26,9 +29,9 @@ const Page = () => {
     const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (inputs.name && inputs.email && inputs.message) {
-            setForm("loading");
+            setForm({ state: "loading" });
             try {
-                const res = await fetch(`api/contact`, {
+                const res = await fetch(`/api/contact`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -39,11 +42,14 @@ const Page = () => {
                 const { error } = await res.json();
 
                 if (error) {
-                    setForm("error");
+                    setForm({ state: "error", message: error });
                     return;
                 }
 
-                setForm("success");
+                setForm({
+                    state: "success",
+                    message: "Your message was sent successfully.",
+                });
                 setInputs({
                     name: "",
                     email: "",
@@ -51,7 +57,10 @@ const Page = () => {
                     message: "",
                 });
             } catch (error) {
-                setForm("error");
+                setForm({
+                    state: "error",
+                    message: "Something went wrong",
+                });
             }
         }
     };
@@ -66,7 +75,7 @@ const Page = () => {
                         </span>{" "}
                         Us
                     </h1>
-                    <p className='my-6 text-justify text-sm text-gray-500'>
+                    <p className='md:my-8 my-6 text-justify text-sm text-gray-500 md:w-[65vw]'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Quisque eu quam tincidunt, accumsan augue elementum,
                         dignissim nulla. Praesent diam odio, maximus non rutrum
@@ -140,27 +149,27 @@ const Page = () => {
                             >
                                 Send Message
                             </button>
+
+                            {form?.state === "loading" ? (
+                                <div>Sending....</div>
+                            ) : form?.state === "error" ? (
+                                <div>{form?.message}</div>
+                            ) : (
+                                form?.state === "success" && (
+                                    <div>Sent successfully</div>
+                                )
+                            )}
                         </div>
                     </form>
-                </div>
-                <div className='-px-8 -my-5 '>
-                    <div className='p-2'>
-                        <h4 className='mb-3 text-xl'>
-                            <span className='p-1 bg-primary text-white'>
-                                Follow
-                            </span>{" "}
-                            Us
-                        </h4>
-                        <div className='flex items-center space-x-5 text-white'>
-                            <a className='p-1 bg-primary'>
-                                <AiOutlineTwitter className='h-6 w-6' />
-                            </a>
-                            <a className='p-1 bg-primary'>
-                                <AiOutlineInstagram className='h-6 w-6' />
-                            </a>
-                            <a className='p-1 bg-primary'>
-                                <AiOutlineLinkedin className='h-6 w-6' />
-                            </a>
+                    <div className='hidden md:block cols-span-1'>
+                        <div className='mx-4 my-12'>
+                            <Image
+                                src='https://cdni.iconscout.com/illustration/premium/thumb/doctor-is-studying-medicine-using-vr-5380002-4503278.png'
+                                alt=''
+                                width={1500}
+                                height={1300}
+                                className='object-contain'
+                            />
                         </div>
                     </div>
                 </div>
